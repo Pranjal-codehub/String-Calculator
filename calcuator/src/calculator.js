@@ -1,4 +1,3 @@
-import React from 'react';
 
 function add(numbers) {
   if (!numbers) return 0;

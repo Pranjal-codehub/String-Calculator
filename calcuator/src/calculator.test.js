@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { add } from "../src/calculator";
 
 describe("String Calculator", () => {
