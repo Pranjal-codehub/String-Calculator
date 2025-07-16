@@ -1,25 +1,38 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
+
+
 function App() {
+  const [input, setInput] = useState("");
+  const [result, setResult] = useState(null);
+  const [error, setError] = useState("");
+
+  const handleAdd = () => {
+    try {
+      setResult(input);
+      setError("");
+    } catch (err) {
+      setResult(null);
+      setError(err.message);
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ padding: "2rem", fontFamily: "sans-serif" }}>
+      <h1>String Calculator</h1>
+      <input
+        style={{ padding: "0.5rem", width: "300px" }}
+        placeholder="Enter string e.g. 1,2 or //;\n1;2"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+      />
+      <button style={{ marginLeft: "1rem" }} onClick={handleAdd}>Calculate</button>
+      {result !== null && <p>Result: {result}</p>}
+      {error && <p style={{ color: "red" }}>Error: {error}</p>}
     </div>
   );
 }
 
 export default App;
+
