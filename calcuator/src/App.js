@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import add from './calculator';
 
 
 
@@ -10,7 +11,8 @@ function App() {
 
   const handleAdd = () => {
     try {
-      setResult(input);
+      const res = add(input);
+      setResult(res);
       setError("");
     } catch (err) {
       setResult(null);
