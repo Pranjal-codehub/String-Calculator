@@ -5,6 +5,11 @@ function add(numbers) {
 
   let delimiter = /,|\n/;
 
+  if (numbers.startsWith("//")) {
+    const [numb, customDelimiter, remaining] = numbers.match(/^\/\/(.+)\n([\s\S]*)/);
+    delimiter = new RegExp(customDelimiter);
+    numbers = remaining;
+  }
 
   const parts = numbers.split(delimiter).map(Number);
   const negatives = parts.filter(n => n < 0);
